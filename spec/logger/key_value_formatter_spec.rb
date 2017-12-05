@@ -5,7 +5,7 @@ RSpec.describe Logger::KeyValueFormatter do
     expect(described_class::VERSION).not_to be nil
   end
 
-  let(:now) { Time.new 2016, 12, 15, 18, 30, 45 }
+  let(:now) { Time.utc(2016, 12, 15, 18, 30, 45) }
 
   let(:severity) { "INFO" }
   let(:progname) { double(:progname) }
@@ -50,7 +50,7 @@ RSpec.describe Logger::KeyValueFormatter do
       it_behaves_like "key value formatter" do
         let(:input) { {} }
 
-        let(:expected_output) { ['source="APP"', 'at="INFO"', 'timestamp="2016-12-15T18:30:45+01:00"'] }
+        let(:expected_output) { ['source="APP"', 'at="INFO"', 'timestamp="2016-12-15T18:30:45Z"'] }
       end
 
       context "when contains source parameter" do
@@ -115,7 +115,7 @@ RSpec.describe Logger::KeyValueFormatter do
         it_behaves_like "key value formatter" do
           let(:input) { { foo: now } }
 
-          let(:expected_output) { ['foo="2016-12-15T18:30:45+01:00"'] }
+          let(:expected_output) { ['foo="2016-12-15T18:30:45Z"'] }
         end
       end
 
@@ -150,10 +150,10 @@ RSpec.describe Logger::KeyValueFormatter do
 
         let(:expected_output) do
           [
-            'source="APP" at="INFO" timestamp="2016-12-15T18:30:45+01:00" ' \
-            'a="foobar" b=57 c=57.543 d=nil e="2016-12-15T18:30:45+01:00" ' \
-            'f-a="foobar" f-b=57 f-c=57.543 f-d=nil f-e="2016-12-15T18:30:45+01:00" ' \
-            'f-g={"a":"foobar","b":57,"c":57.54321,"d":null,"e":"2016-12-15 18:30:45 +0100"}'
+            'source="APP" at="INFO" timestamp="2016-12-15T18:30:45Z" ' \
+            'a="foobar" b=57 c=57.543 d=nil e="2016-12-15T18:30:45Z" ' \
+            'f-a="foobar" f-b=57 f-c=57.543 f-d=nil f-e="2016-12-15T18:30:45Z" ' \
+            'f-g={"a":"foobar","b":57,"c":57.54321,"d":null,"e":"2016-12-15 18:30:45 UTC"}'
           ]
         end
       end
