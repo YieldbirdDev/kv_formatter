@@ -1,8 +1,8 @@
 # KvFormatter
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/kv_formatter`. To experiment with that code, run `bin/console` for an interactive prompt.
+![build](https://travis-ci.org/adtaily/kv_formatter.svg?branch=master)
 
-TODO: Delete this and the text above, and describe your gem
+This gem provides logger formatter which logs `key=value` parts, understandable by [Logstash kv filter](https://www.elastic.co/guide/en/logstash/current/plugins-filters-kv.html) and [used by Heroku](https://devcenter.heroku.com/articles/logging#view-logs).
 
 ## Installation
 
@@ -25,12 +25,11 @@ Or install it yourself as:
 See example usage in [bin/console](bin/console).
 
 ```ruby
+pry(main)> require "kv_formatter"
 pry(main)> logger = Logger.new(STDOUT, formatter: Logger::KeyValueFormatter.new)
 pry(main)> logger.info(well: "Hello!")
 source="APP" at="INFO" timestamp="2017-12-05T13:35:50+01:00" well="Hello!"
 ```
-
-This gem provides logger formatter which logs `key=value` parts, understandable by [Logstash kv filter](https://www.elastic.co/guide/en/logstash/current/plugins-filters-kv.html) and [used by Heroku](https://devcenter.heroku.com/articles/logging#view-logs).
 
 ## Development
 
