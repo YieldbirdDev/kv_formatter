@@ -1,0 +1,30 @@
+AllCops:
+  TargetRubyVersion: 2.4
+
+Bundler/OrderedGems:
+  Enabled: false
+
+Style/NumericLiterals:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/Encoding:
+  Enabled: false
+
+Naming/AccessorMethodName:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 125
+
+Metrics/BlockLength:
+  Exclude:
+    - "**/*_spec.rb"
+
+StringLiterals:
+  EnforcedStyle: double_quotes
+
+DotPosition:
+  EnforcedStyle: leading
